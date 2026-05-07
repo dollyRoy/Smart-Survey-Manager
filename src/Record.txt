@@ -1,0 +1,93 @@
+.root {
+    -fx-background-color: #f5f7fa;
+    -fx-padding: 20;
+}
+
+.title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.sidebar {
+    -fx-background-color: white;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 2);
+}
+
+.text-field {
+    -fx-padding: 8;
+    -fx-border-color: #dcdde1;
+    -fx-border-radius: 5;
+}
+
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
+
+.controls {
+    -fx-padding: 10;
+}
+
+.table-container {
+    -fx-background-color: white;
+    -fx-padding: 10;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 2);
+}
+
+.table-view {
+    -fx-border-color: transparent;
+}
+
+.label {
+    -fx-font-size: 14px;
+}
+.button:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+
+        // Refresh Button Logic
+        refreshBtn.setOnAction(e -> {
+
+            data.clear();
+
+            try (Connection conn = DBHelper.connect();
+                 Statement stmt = conn.createStatement();
+                 ResultSet rs = stmt.executeQuery("SELECT * FROM points")) {
+
+                while (rs.next()) {
+
+                    data.add(new Point(
+                            rs.getInt("id"),
+                            rs.getDouble("x"),
+                            rs.getDouble("y"),
+                            rs.getDouble("z")
+                    ));
+                    System.out.println(rs.getInt("id"));
+                }
+
+                resultLabel.setText("🔄 Data refreshed!");
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                resultLabel.setText("❌ Refresh failed");
+            }
+        });
+        FadeTransition ft = new FadeTransition(Duration.millis(400), table);
+        ft.setFromValue(0.5);
+        ft.setToValue(1);
+        ft.play();

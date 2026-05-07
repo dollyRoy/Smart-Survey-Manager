@@ -1,0 +1,366 @@
+/* ================= ROOT ================= */
+
+.root{
+    -fx-background-color: #0f172a;
+}
+
+
+/* ================= TOP BAR ================= */
+
+.top-bar{
+    -fx-background-color: linear-gradient(to right,#111827,#1e293b);
+    -fx-padding: 10;
+
+}
+
+.header{
+    -fx-text-fill: white;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+
+/* ================= CARD ================= */
+
+.card{
+    -fx-background-color: #1e293b;
+    -fx-padding: 15;
+    -fx-background-radius: 16;
+
+    -fx-border-color: #334155;
+    -fx-border-radius: 16;
+
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(0,0,0,0.45),
+        15,
+        0,
+        0,
+        4
+    );
+}
+
+
+/* ================= LABELS ================= */
+
+.label{
+    -fx-text-fill: #e2e8f0;
+}
+
+
+/* ================= SECTION TITLES ================= */
+
+.section-title{
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #c084fc;
+}
+
+.sub-title{
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #93c5fd;
+}
+
+
+/* ================= TEXTFIELDS ================= */
+
+.text-field{
+    -fx-background-color: #334155;
+    -fx-text-fill: white;
+
+    -fx-prompt-text-fill: #94a3b8;
+
+    -fx-border-color: #475569;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+
+    -fx-padding: 8;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.button{
+    -fx-background-color: linear-gradient(to right,#2563eb,#1d4ed8);
+
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+
+    -fx-cursor: hand;
+}
+
+.button:hover{
+    -fx-opacity: 0.92;
+    -fx-translate-y: -1;
+}
+
+
+/* ================= DARK TABLE ================= */
+
+.table-view {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 14;
+    -fx-border-radius: 14;
+    -fx-border-color: #334155;
+
+    -fx-padding: 8;
+    -fx-font-size: 14px;
+
+    -fx-table-cell-border-color: transparent;
+}
+
+/* Header background */
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to right, #0f172a, #1e3a8a);
+    -fx-background-radius: 12 12 0 0;
+    -fx-padding: 6;
+}
+
+/* Header cells */
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+/* Header text */
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 0;
+}
+
+/* Rows */
+.table-row-cell {
+    -fx-background-color: #1e293b;
+    -fx-border-color: transparent transparent #334155 transparent;
+    -fx-cell-size: 52px;
+}
+
+/* Alternate row */
+.table-row-cell:odd {
+    -fx-background-color: #243041;
+}
+
+/* Hover */
+.table-row-cell:hover {
+    -fx-background-color: #334155;
+}
+
+/* Selected */
+.table-row-cell:selected {
+    -fx-background-color: linear-gradient(to right, #2563eb, #3b82f6);
+}
+
+/* Selected text */
+.table-row-cell:selected .text {
+    -fx-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Cells */
+.table-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 10;
+    -fx-text-fill: #f1f5f9;
+    -fx-font-size: 14px;
+}
+
+/* Scrollbars */
+.table-view .thumb {
+    -fx-background-color: #475569;
+    -fx-background-radius: 10;
+}
+
+
+/* ================= COMBO BOX ================= */
+
+.combo-box{
+    -fx-background-color: #334155;
+    -fx-background-radius: 10;
+}
+
+.combo-box .list-cell{
+    -fx-text-fill: white;
+    -fx-background-color: #334155;
+}
+
+.combo-box-popup .list-view{
+    -fx-background-color: #1e293b;
+}
+
+.combo-box-popup .list-cell:hover{
+    -fx-background-color: #2563eb;
+}
+
+
+/* ================= DISTANCE SECTION ================= */
+
+.purple-btn{
+    -fx-background-color: linear-gradient(to right,#7c3aed,#8b5cf6);
+
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 10;
+    -fx-padding: 12;
+}
+
+.purple-btn:hover{
+    -fx-opacity: 0.9;
+}
+
+.result-card{
+    -fx-background-color: #1e1b4b;
+
+    -fx-background-radius: 14;
+
+    -fx-padding: 20;
+
+    -fx-border-color: #4338ca;
+    -fx-border-radius: 14;
+
+    -fx-alignment: center;
+}
+
+.distance-heading{
+    -fx-font-size: 18px;
+    -fx-text-fill: #c4b5fd;
+}
+
+.distance-value{
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #a78bfa;
+}
+
+
+/* ================= STATS ================= */
+
+.stats-title{
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #34d399;
+}
+
+.mini-stat-card{
+    -fx-background-color: #111827;
+
+    -fx-padding: 12;
+    -fx-spacing: 10;
+
+    -fx-alignment: center;
+
+    -fx-background-radius: 14;
+
+    -fx-border-color: #374151;
+    -fx-border-radius: 14;
+
+    -fx-pref-width: 180;
+    -fx-pref-height: 180;
+}
+
+.card-small-title{
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: white;
+}
+
+.high-value{
+    -fx-font-size: 38px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #22c55e;
+}
+
+.low-value{
+    -fx-font-size: 38px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ef4444;
+}
+
+.avg-value{
+    -fx-font-size: 38px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #3b82f6;
+}
+
+.point-id{
+    -fx-font-size: 15px;
+    -fx-text-fill: #cbd5e1;
+}
+
+
+/* ================= GREEN BUTTON ================= */
+
+.green-btn{
+    -fx-background-color: linear-gradient(to right,#10b981,#059669);
+
+    -fx-text-fill: white;
+
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-padding: 12 18;
+
+    -fx-background-radius: 10;
+}
+
+.green-btn:hover{
+    -fx-opacity: 0.92;
+}
+
+
+/* ================= QUICK ACTIONS ================= */
+
+.quick-actions-title{
+    -fx-font-size: 26px;
+    -fx-font-weight: 800;
+
+    -fx-text-fill: #fb923c;
+}
+
+.quick-btn{
+
+    -fx-background-color: #111827;
+
+    -fx-border-color: #374151;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+
+    -fx-text-fill: #f8fafc;
+
+    -fx-padding: 12 15;
+
+    -fx-alignment: CENTER_LEFT;
+
+    -fx-cursor: hand;
+}
+
+.quick-btn:hover{
+
+    -fx-background-color: #1e293b;
+
+    -fx-border-color: #60a5fa;
+
+    -fx-translate-y: -2;
+}
+
+
+/* ================= SCROLLBAR ================= */
+
+.scroll-bar{
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb{
+    -fx-background-color: #475569;
+    -fx-background-radius: 10;
+}
