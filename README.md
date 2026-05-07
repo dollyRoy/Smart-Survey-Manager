@@ -77,7 +77,8 @@ Modern light and dark themes with smooth switching for a professional dashboard 
 ```bash
 git clone https://github.com/your-username/Smart-Survey-Manager.git
 
-🔮 Future Improvements
+```
+#🔮 Future Improvements
 
 The project can be expanded with advanced surveying and GIS features such as:
 
@@ -99,8 +100,9 @@ The project can be expanded with advanced surveying and GIS features such as:
 🌐 Web Version Deployment
 📡 Real-time Survey Sync
 🧠 AI-based Terrain Analysis
-
-🎯 Project Goal
+```
+```
+#🎯 Project Goal
 
 The goal of this project is to create a clean, professional, and efficient surveying management system that combines:
 
