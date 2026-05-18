@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.collections.*;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -14,6 +15,9 @@ import model.Point;
 import database.DBHelper;
 import java.sql.*;
 import java.util.Objects;
+import javafx.scene.image.Image;
+import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 
 
 public class Main extends Application {
@@ -23,7 +27,53 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
+        Label loginTitle = new Label("Smart Survey Manager");
+        loginTitle.getStyleClass().add("login-title");
+
+        TextField usernameField = new TextField();
+        usernameField.setPromptText("Username");
+        usernameField.getStyleClass().add("login-field");
+
+        PasswordField passwordField = new PasswordField();
+        passwordField.setPromptText("Password");
+        passwordField.getStyleClass().add("login-field");
+
+        Button loginBtn = new Button("Login");
+        loginBtn.getStyleClass().add("login-btn");
+
+        Label loginMessage = new Label();
+        loginMessage.getStyleClass().add("login-message");
+
+        Button registerBtn = new Button("Register");
+        registerBtn.getStyleClass().add("register-btn");
+
+        VBox loginCard = new VBox(22);
+
+        loginCard.getChildren().addAll(
+                loginTitle,
+                usernameField,
+                passwordField,
+                loginBtn,
+                loginMessage,
+                registerBtn
+        );
+
+        loginCard.getStyleClass().add("login-card");
+
+        loginCard.setMaxWidth(420);
+        loginCard.setPrefWidth(420);
+
+        StackPane loginRoot = new StackPane(loginCard);
+        loginRoot.getStyleClass().add("login-root");
+
+        Scene loginScene = new Scene(loginRoot, 1400, 800);
+        loginScene.getStylesheets().add(
+                getClass().getResource("style.css").toExternalForm()
+        );
+
         DBHelper.createTable();
+        DBHelper.createUsersTable();
+
 
         // Inputs
         Label addTitle = new Label("\uD83D\uDCCD Add New Point");
@@ -173,6 +223,7 @@ public class Main extends Application {
         //STATS ROW
         HBox statsRow = new HBox(20, highCard, lowCard, avgCard);
 
+
         // BUTTON
         Button showStatsBtn = new Button("📊 Show Elevation Stats");
         showStatsBtn.getStyleClass().add("green-btn");
@@ -295,9 +346,6 @@ public class Main extends Application {
         Button themeToggle = new Button("🌙 Dark Mode");
 
 
-//        root.setLeft(sidebar);
-//        form.setPrefWidth(200);
-//        form.getStyleClass().add("sidebar");
 
         // Table container
         VBox tableBox = new VBox(table);
@@ -418,27 +466,38 @@ public class Main extends Application {
 
 
 
-        Scene scene = new Scene(root, 1100, 700);
-        scene.getStylesheets().add(
+        Scene mainScene = new Scene(root, 1100, 700);
+        // Login button logic
+        loginBtn.setOnAction(e->{
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+
+            if(DBHelper.validateUser(username,password)){
+                stage.setScene(mainScene);
+            } else{
+                loginMessage.setText("Invalid Username or Password");
+            }
+        });
+        mainScene.getStylesheets().add(
                 getClass().getResource("style.css").toExternalForm()
         );
 
         stage.setTitle("Smart Survey Manager");
-        stage.setScene(scene);
+        stage.setScene(loginScene);
         stage.show();
 
         final boolean[] isDark = {false};
 
         themeToggle.setOnAction(e -> {
             if (!isDark[0]) {
-                scene.getStylesheets().clear();
-                scene.getStylesheets().add(
+                mainScene.getStylesheets().clear();
+                mainScene.getStylesheets().add(
                         getClass().getResource("dark.css").toExternalForm()
                 );
                 themeToggle.setText("☀ Light Mode");
             } else {
-                scene.getStylesheets().clear();
-                scene.getStylesheets().add(
+                mainScene.getStylesheets().clear();
+                mainScene.getStylesheets().add(
                         Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm()
                 );
                 themeToggle.setText("🌙 Dark Mode");
@@ -618,6 +677,28 @@ public class Main extends Application {
             }
         });
 
+        stage.getIcons().add(
+                new Image(getClass().getResourceAsStream("/image.png"))
+        );
+
+        // Register Logic
+        registerBtn.setOnAction(e -> {
+
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+
+            if(!username.isEmpty() && !password.isEmpty()) {
+
+                DBHelper.registerUser(username, password);
+                System.out.println("Register button clicked");
+
+                loginMessage.setText("Registration Successful!");
+
+            } else {
+
+                loginMessage.setText("Fill all fields");
+            }
+        });
     }
 
     public static void main(String[] args) {

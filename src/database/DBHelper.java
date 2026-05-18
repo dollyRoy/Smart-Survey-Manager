@@ -22,6 +22,7 @@ public class DBHelper {
             e.printStackTrace();
         }
     }
+
     public static void insertPoint(int id, double x, double y, double z){
         String sql = "INSERT INTO points(id,x,y,z) VALUES (?,?,?,?)";
 
@@ -86,4 +87,73 @@ public class DBHelper {
             e.printStackTrace();
         }
     }
+    // create user
+    public static void createUsersTable(){
+
+        String sql =
+                "CREATE TABLE IF NOT EXISTS users(" +
+                        "username TEXT PRIMARY KEY," +
+                        "password TEXT" +
+                        ")";
+
+        try(Connection conn = connect();
+            Statement stmt = conn.createStatement()){
+
+            stmt.execute(sql);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    // register user
+    public static void registerUser(
+            String username,
+            String password){
+
+        String sql =
+                "INSERT INTO users(username,password) VALUES(?,?)";
+
+        try(Connection conn = connect();
+            PreparedStatement ps =
+                    conn.prepareStatement(sql)){
+
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+            ps.executeUpdate();
+            System.out.println("User Registered");
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    // login validation
+    public static boolean validateUser(
+            String username,
+            String password){
+
+        String sql =
+                "SELECT * FROM users WHERE username=? AND password=?";
+
+        try(Connection conn = connect();
+            PreparedStatement ps =
+                    conn.prepareStatement(sql)){
+
+            ps.setString(1, username);
+            ps.setString(2, password);
+
+            ResultSet rs = ps.executeQuery();
+
+            return rs.next();
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
+
 }
